@@ -1,0 +1,27 @@
+{% extends 'numbers/base.html' %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm">
+			<h1>Find PI to the Nth Digit</h1>
+			<form action="{% url 'numbers:pi_to_n' %}" method="post">
+				{% csrf_token %}
+				<div class="form-group">
+					<label for="digit">Enter a number: </label>
+					<input type="number" min="1" class="form-control" id="digit" placeholder="Enter a number">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm">
+			<h2>Result: </h2>
+		{% if pi %}
+			<h3>{{ pi }}</h3>
+		{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}
